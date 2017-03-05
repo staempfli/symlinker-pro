@@ -1,0 +1,6 @@
+/var/www/tools/symlinker-pro/tests/shared/project/target-2=>/var/www/tools/symlinker-pro/tests/destination/project/target-link-2
+/var/www/tools/symlinker-pro/tests/shared/project/file-3=>/var/www/tools/symlinker-pro/tests/destination/project/file-link-3
+/var/www/tools/symlinker-pro/tests/shared/project/dir-target-1=>/var/www/tools/symlinker-pro/tests/destination/project/dir-target-1
+
+
+

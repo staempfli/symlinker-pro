@@ -1,0 +1,17 @@
+{
+  "chmod": "0755",
+  "directories": [
+    "src"
+  ],
+  "finder": [
+    {
+      "name": "*.php",
+      "in": "vendor",
+      "exclude": ["kherge", "Tests", "Test", "tests", "test"]
+    }
+  ],
+  "git-version": "git-version",
+  "main": "bin/symlinker-pro",
+  "output": "symlinker-pro.phar",
+  "stub": true
+}

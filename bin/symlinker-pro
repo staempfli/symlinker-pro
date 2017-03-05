@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+// application.php
+
+require __DIR__ .'/../vendor/autoload.php';
+
+/**
+ * Shortcut constant for the project root directory
+ */
+define('BP', dirname(__DIR__));
+/**
+ * Command name
+ */
+define('COMMAND_NAME', basename(__FILE__));
+
+// Init Console Application
+use Symfony\Component\Console\Application;
+
+$application = new Application('@git-version@');
+
+// Custom commands
+$application->add(new Staempfli\Symlinker\Command\Create\CreateLinkCommand());
+$application->add(new Staempfli\Symlinker\Command\Create\CreateFromFileCommand());
+$application->add(new Staempfli\Symlinker\Command\Phar\SelfUpdateCommand());
+
+$application->run();

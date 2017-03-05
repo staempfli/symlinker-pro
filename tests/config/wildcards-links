@@ -1,0 +1,2 @@
+shared/project/dir-iterative-1/*=>destination/project/dir-content-2
+shared/project/dir-recursive-1/**=>destination/project/dir-recursive

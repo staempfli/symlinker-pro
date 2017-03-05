@@ -1,0 +1,4 @@
+# All except folders containing .gitKeep file
+*
+!.gitignore
+!*/**.gitKeep

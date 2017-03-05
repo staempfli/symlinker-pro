@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+/bin/*
+!bin/symlinker-pro
+/vendor
+
+symlinker-pro.phar

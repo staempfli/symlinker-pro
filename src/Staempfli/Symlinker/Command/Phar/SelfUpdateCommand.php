@@ -13,7 +13,6 @@ use Staempfli\Symlinker\Helper\ApplicationHelper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class SelfUpdateCommand extends Command
 {
@@ -72,18 +71,17 @@ EOT
         $updater->getStrategy()->setPharName('symlinker-pro.phar');
         $updater->getStrategy()->setCurrentLocalVersion('@git-version@');
 
-        $symfonyStyle = new SymfonyStyle($input, $output);
         try {
             $result = $updater->update();
             if ($result) {
                 $newVersion = $updater->getNewVersion();
                 $oldVersion = $updater->getOldVersion();
-                $symfonyStyle->success(sprintf('Updated to version %s from %s', $newVersion, $oldVersion));
+                $output->success(sprintf('<bg=green;options=bold>Updated to version %s from %s</>', $newVersion, $oldVersion));
             } else {
-                $symfonyStyle->writeln('<info>No update needed!</info>');
+                $output->writeln('<info>No update needed!</info>');
             }
         } catch (\Exception $e) {
-            $symfonyStyle->error('There was an error while updating. Please try again later');
+            $output->error('<error>There was an error while updating. Please try again later</error>');
         }
     }
 

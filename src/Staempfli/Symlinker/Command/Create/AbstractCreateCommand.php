@@ -10,10 +10,10 @@ namespace Staempfli\Symlinker\Command\Create;
 
 use Staempfli\Symlinker\Task\SymlinkTask;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class AbstractCreateCommand extends Command
 {
@@ -23,13 +23,13 @@ abstract class AbstractCreateCommand extends Command
     const OPTION_ENABLE_WILDCARDS = 'enable-wildcards';
 
     /**
-     * @var SymfonyStyle
-     */
-    protected $symfonyStyle;
-    /**
      * @var SymlinkTask
      */
     protected $symlinkTask;
+    /**
+     * @var QuestionHelper
+     */
+    protected $questionHelper;
 
     public function __construct($name = null)
     {
@@ -67,8 +67,8 @@ abstract class AbstractCreateCommand extends Command
      */
     public function run(InputInterface $input, OutputInterface $output)
     {
-        $this->symfonyStyle = new SymfonyStyle($input, $output);
-        $this->symlinkTask->setSymfonyStyle($this->symfonyStyle);
+        $this->questionHelper = $this->getHelper('question');
+        $this->symlinkTask->setConsoleOutput($output);
         return parent::run($input, $output);
     }
 

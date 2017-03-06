@@ -14,6 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 
 class CreateFromFileCommand extends AbstractCreateCommand
 {
@@ -56,7 +57,8 @@ class CreateFromFileCommand extends AbstractCreateCommand
     {
         parent::interact($input, $output);
         if (!$input->getArgument(self::ARG_FILE_PATH)) {
-            $fileInput = $this->symfonyStyle->ask('File Path:');
+            $question = new Question('<question>File Path:</question>');
+            $fileInput = $this->questionHelper->ask($input, $output, $question);
             $input->setArgument(self::ARG_FILE_PATH, $fileInput);
         }
     }
@@ -74,7 +76,7 @@ class CreateFromFileCommand extends AbstractCreateCommand
             $dest = $this->getDestPathWithPrefixAppended($dest, $input);
             $this->symlinkTask->createSymlink($source, $dest);
         }
-        $this->symfonyStyle->success('Symlinks successfully created!');
+        $output->writeln('<bg=green;options=bold>Symlinks successfully created!</>');
     }
 
     /**

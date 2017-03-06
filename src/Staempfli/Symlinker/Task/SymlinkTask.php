@@ -10,7 +10,7 @@ namespace Staempfli\Symlinker\Task;
 use Staempfli\Symlinker\Helper\FileHelper;
 use Staempfli\Symlinker\Helper\RelativeTargetHelper;
 use Staempfli\Symlinker\Helper\SourcePathHelper;
-use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class SymlinkTask
 {
@@ -27,9 +27,9 @@ class SymlinkTask
      */
     protected $relativeTargetHelper;
     /**
-     * @var SymfonyStyle
+     * @var OutputInterface
      */
-    protected $symfonyStyle;
+    protected $consoleOutput;
     /**
      * @var string
      */
@@ -62,11 +62,11 @@ class SymlinkTask
     }
 
     /**
-     * @param SymfonyStyle $symfonyStyle
+     * @param OutputInterface $consoleOutput
      */
-    public function setSymfonyStyle(SymfonyStyle $symfonyStyle)
+    public function setConsoleOutput(OutputInterface $consoleOutput)
     {
-        $this->symfonyStyle = $symfonyStyle;
+        $this->consoleOutput = $consoleOutput;
     }
 
     public function enableWildcards()
@@ -174,7 +174,7 @@ class SymlinkTask
                 throw new \Exception(sprintf('There was an error creating symlink %s -> %s', $relativeTarget, $link));
             }
         }
-        $this->symfonyStyle->writeln(sprintf('- Symlink Created: %s -> %s', $relativeTarget, $link));
+        $this->consoleOutput->writeln(sprintf('- Symlink Created: %s -> %s', $relativeTarget, $link));
     }
 
     /**
@@ -204,7 +204,7 @@ class SymlinkTask
                 throw new \Exception(sprintf('Destination exists: %s. Use --force to overwrite', $link));
             }
             $this->fileHelper->removeExitingPath($link);
-            $this->symfonyStyle->writeln(sprintf('- Path removed: %s', $link));
+            $this->consoleOutput->writeln(sprintf('- Path removed: %s', $link));
         }
     }
 

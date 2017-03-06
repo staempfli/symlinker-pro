@@ -24,7 +24,7 @@
   "config": {
     "bin-dir": "bin"
   },
-  "bin": ["symlinker-pro"],
+  "bin": ["bin/symlinker-pro"],
   "scripts": {
     "setPermissionsBin": "chmod -R +x bin",
     "post-install-cmd": [

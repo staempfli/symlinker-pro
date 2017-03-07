@@ -80,12 +80,12 @@ EOT
             if ($result) {
                 $newVersion = $this->updater->getNewVersion();
                 $oldVersion = $this->updater->getOldVersion();
-                $output->success(sprintf('<bg=green;options=bold>Updated to version %s from %s</>', $newVersion, $oldVersion));
+                $output->writeln(sprintf('<bg=green;options=bold>Updated to version %s from %s</>', $newVersion, $oldVersion));
             } else {
                 $output->writeln('<info>No update needed!</info>');
             }
         } catch (\Exception $e) {
-            $output->error('<error>There was an error while updating. Please try again later</error>');
+            $output->writeln('<error>There was an error while updating. Please try again later</error>');
         }
     }
 

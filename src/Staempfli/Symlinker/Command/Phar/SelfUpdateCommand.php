@@ -17,6 +17,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SelfUpdateCommand extends Command
 {
     /**
+     * @var PharUpdater
+     */
+    protected $updater;
+    /**
      * @var ApplicationHelper
      */
     protected $applicationHelper;
@@ -27,6 +31,7 @@ class SelfUpdateCommand extends Command
      */
     public function __construct($name = null)
     {
+        $this->updater = new PharUpdater(null, false, PharUpdater::STRATEGY_GITHUB);
         $this->applicationHelper = new ApplicationHelper();
         parent::__construct($name);
     }
@@ -62,20 +67,19 @@ EOT
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $updater = new PharUpdater(null, false, PharUpdater::STRATEGY_GITHUB);
-        $updater->getStrategy()->setPackageName('staempfli/symlinker-pro');
-        $updater->getStrategy()->setPharName('symlinker-pro.phar');
-        $updater->getStrategy()->setCurrentLocalVersion('@git-version@');
+        $this->updater->getStrategy()->setPackageName('staempfli/symlinker-pro');
+        $this->updater->getStrategy()->setPharName('symlinker-pro.phar');
+        $this->updater->getStrategy()->setCurrentLocalVersion('@git-version@');
 
         try {
-            $result = $updater->update();
+            $result = $this->updater->update();
             if ($result) {
-                $newVersion = $updater->getNewVersion();
-                $oldVersion = $updater->getOldVersion();
+                $newVersion = $this->updater->getNewVersion();
+                $oldVersion = $this->updater->getOldVersion();
                 $output->success(sprintf('<bg=green;options=bold>Updated to version %s from %s</>', $newVersion, $oldVersion));
             } else {
                 $output->writeln('<info>No update needed!</info>');

@@ -43,12 +43,12 @@ class CreateLinkCommand extends AbstractCreateCommand
         parent::interact($input, $output);
 
         if (!$input->getArgument(self::ARG_SOURCE)) {
-            $question = new Question('<question>Source Path:</question>');
+            $question = new Question('<fg=green>Source Path: </>');
             $sourceInput = $this->questionHelper->ask($input, $output, $question);
             $input->setArgument(self::ARG_SOURCE, $sourceInput);
         }
         if (!$input->getArgument(self::ARG_DESTINATION)) {
-            $question = new Question('<question>Destination Path:</question>');
+            $question = new Question('<fg=green>Destination Path: </>');
             $destInput = $this->questionHelper->ask($input, $output, $question);
             $input->setArgument(self::ARG_DESTINATION, $destInput);
         }

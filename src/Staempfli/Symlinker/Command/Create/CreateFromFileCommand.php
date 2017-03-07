@@ -57,7 +57,7 @@ class CreateFromFileCommand extends AbstractCreateCommand
     {
         parent::interact($input, $output);
         if (!$input->getArgument(self::ARG_FILE_PATH)) {
-            $question = new Question('<question>File Path:</question>');
+            $question = new Question('<fg=green>File Path: </>');
             $fileInput = $this->questionHelper->ask($input, $output, $question);
             $input->setArgument(self::ARG_FILE_PATH, $fileInput);
         }

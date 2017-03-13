@@ -81,6 +81,7 @@ class CreateFromFileCommand extends AbstractCreateCommand
     /**
      * @param InputInterface $input
      * @return array
+     * @throws \Exception
      */
     protected function getFileLines(InputInterface $input)
     {

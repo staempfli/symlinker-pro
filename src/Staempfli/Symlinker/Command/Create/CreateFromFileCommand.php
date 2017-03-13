@@ -9,7 +9,6 @@
 namespace Staempfli\Symlinker\Command\Create;
 
 use Staempfli\Symlinker\Helper\FileHelper;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -87,7 +86,7 @@ class CreateFromFileCommand extends AbstractCreateCommand
     {
         $filePath = $input->getArgument(self::ARG_FILE_PATH);
         if (!file_exists($filePath)) {
-            throw new InvalidArgumentException(sprintf('File not found in %s', $filePath));
+            throw new \Exception(sprintf('File not found in %s', $filePath));
         }
         return file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }

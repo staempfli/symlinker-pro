@@ -13,7 +13,9 @@ Small tool that creates **relative** symlinks from given paths. A file containin
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLBt8dizedSZCpTXeS71BQdwK7VT5F6kMz" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.youtube.com/embed/videoseries?list=PLBt8dizedSZCpTXeS71BQdwK7VT5F6kMz" target="_blank">
+    <img src="docs/images/playlist-thumbnail.png" alt="Symlinker-pro demo playlist" width="560" height="315" border="10" />
+</a>
 
 ## Installation
 

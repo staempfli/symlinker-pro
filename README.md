@@ -11,6 +11,10 @@ Small tool that creates **relative** symlinks from given paths. A file containin
 * Create bunch of symlinks from file content
 * Recursive symlinks using `/*` and `/**`
 
+## Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLBt8dizedSZCpTXeS71BQdwK7VT5F6kMz" frameborder="0" allowfullscreen></iframe>
+
 ## Installation
 
 ### Option1: Using Composer

@@ -13,7 +13,7 @@ Small tool that creates **relative** symlinks from given paths. A file containin
 
 ## Demo
 
-<a href="https://www.youtube.com/embed/videoseries?list=PLBt8dizedSZCpTXeS71BQdwK7VT5F6kMz" target="_blank">
+<a href="https://www.youtube.com/playlist?list=PLBt8dizedSZCpTXeS71BQdwK7VT5F6kMz" target="_blank">
     <img src="docs/images/playlist-thumbnail.png" alt="Symlinker-pro demo playlist" width="560" height="315" border="10" />
 </a>
 

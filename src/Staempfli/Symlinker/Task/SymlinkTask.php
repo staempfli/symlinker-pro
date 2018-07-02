@@ -50,6 +50,10 @@ class SymlinkTask
      * @var bool
      */
     protected $dryRunEnabled = false;
+    /**
+     * @var bool
+     */
+    protected $createDirectory = false;
 
     /**
      * SymlinkTask constructor.
@@ -82,6 +86,11 @@ class SymlinkTask
     public function enableDryRun()
     {
         $this->dryRunEnabled = true;
+    }
+
+    public function enableCreateDirectory()
+    {
+        $this->createDirectory = true;
     }
 
     /**
@@ -189,7 +198,11 @@ class SymlinkTask
         }
         $parentDirForLink = dirname($link);
         if (!is_dir($parentDirForLink)) {
-            throw new \Exception(sprintf('Destination Parent dir not existing: %s', $parentDirForLink));
+            if($this->createDirectory) {
+                mkdir($parentDirForLink, 0755, true);
+            } else {
+                throw new \Exception(sprintf('Destination Parent dir not existing: %s', $parentDirForLink));
+            }
         }
     }
 

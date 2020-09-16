@@ -1,5 +1,7 @@
 # symlinker-pro
 
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](http://www.repostatus.org/badges/latest/abandoned.svg)](http://www.repostatus.org/#abandoned)
+
 ##### Relative symlinks creator
 
 Small tool that creates **relative** symlinks from given paths. A file containing a bunch of paths can also be given to create multiple symlinks in a single run.
